@@ -17,4 +17,24 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
-jjhh
+axios
+  .get("https://lambda-times-backend.herokuapp.com/articles")
+  .then(response => {
+    let articleObjects = response.data.articles;
+    let articleArrays = Object.values(articleObjects);
+    let articleTopics = Object.keys(articleObjects);
+
+    let topicButtons = document.querySelectorAll(".tabs .topics div");
+    topicButtons.forEach(item => {
+      let data = item.getAttribute("data-show");
+      item.addEventListener("click", () => dataClick(data));
+    });
+
+    articleArrays.forEach((array, index) => {
+      array.forEach(article => {
+        cardComponent(article, articleTopics[index]);
+      });
+    });
+  });
+
+let cardContainer = document.querySelector(".cards-container");
