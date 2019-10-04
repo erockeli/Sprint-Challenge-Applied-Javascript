@@ -38,3 +38,35 @@ axios
   });
 
 let cardContainer = document.querySelector(".cards-container");
+
+function cardComponent(article, topic) {
+    let cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
+    cardDiv.setAttribute("data-topic", topic);
+  
+    let headlineDiv = document.createElement("div");
+    headlineDiv.classList.add("headline");
+    headlineDiv.textContent = article.headline;
+  
+    let authorDiv = document.createElement("div");
+    authorDiv.classList.add("author");
+  
+    let imgDiv = document.createElement("div");
+    imgDiv.classList.add("img-container");
+  
+    let authorImg = document.createElement("img");
+    authorImg.src = article.authorPhoto;
+  
+    let authorNameSpan = document.createElement("span");
+    authorNameSpan.textContent = article.authorName;
+  
+    imgDiv.appendChild(authorImg);
+    authorDiv.appendChild(imgDiv);
+    authorDiv.appendChild(authorNameSpan);
+  
+    cardDiv.appendChild(headlineDiv);
+    cardDiv.appendChild(authorDiv);
+  
+    cardContainer.appendChild(cardDiv);
+  }
+  
