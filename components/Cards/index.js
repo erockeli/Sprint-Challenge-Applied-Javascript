@@ -70,3 +70,13 @@ function cardComponent(article, topic) {
     cardContainer.appendChild(cardDiv);
   }
   
+  function dataClick(data) {
+    let selectAllCards = document.querySelectorAll(".card");
+    selectAllCards.forEach(card => {
+      let thisTopic = card.getAttribute("data-topic");
+      card.style.display = "none";
+      if (thisTopic === data) {
+        card.style.display = "flex";
+      }
+    });
+  }
